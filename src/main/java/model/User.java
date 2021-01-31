@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -97,5 +98,18 @@ public class User {
                 ", password = '" + password + '\'' +
                 ", role = " + role +
                 "} ";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email);
     }
 }

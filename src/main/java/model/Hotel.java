@@ -1,13 +1,9 @@
 package model;
 
 
-import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -60,5 +56,14 @@ public class Hotel {
     @Override
     public int hashCode() {
         return Objects.hash(name, country);
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }
