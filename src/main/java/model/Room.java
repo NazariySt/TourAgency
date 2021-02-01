@@ -24,7 +24,7 @@ public class Room {
 
     @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "roomClass", referencedColumnName = "id")
-    private RoomClass roomClass;
+    private RoomType roomType;
 
     public Integer getId() {
         return id;
@@ -50,12 +50,12 @@ public class Room {
         this.orders = orders;
     }
 
-    public RoomClass getRoomClass() {
-        return roomClass;
+    public RoomType getRoomClass() {
+        return roomType;
     }
 
-    public void setRoomClass(RoomClass roomClass) {
-        this.roomClass = roomClass;
+    public void setRoomClass(RoomType roomType) {
+        this.roomType = roomType;
     }
 
     @Override
@@ -63,11 +63,11 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return Objects.equals(id, room.id) && Objects.equals(hotel, room.hotel) && Objects.equals(roomClass, room.roomClass);
+        return Objects.equals(id, room.id) && Objects.equals(hotel, room.hotel) && Objects.equals(roomType, room.roomType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, hotel, roomClass);
+        return Objects.hash(id, hotel, roomType);
     }
 }

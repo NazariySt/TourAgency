@@ -1,21 +1,23 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roomsClasses")
-public class RoomClass {
+@Table(name = "roomsType")
+public class RoomType {
     @Id
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "type")
     private String type;
+
+    @ManyToOne
+    private Hotel hotel;
+
+    private Integer price;
 
     public Integer getId() {
         return id;
@@ -37,8 +39,8 @@ public class RoomClass {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomClass roomClass = (RoomClass) o;
-        return Objects.equals(id, roomClass.id) && Objects.equals(type, roomClass.type);
+        RoomType roomType = (RoomType) o;
+        return Objects.equals(id, roomType.id) && Objects.equals(type, roomType.type);
     }
 
     @Override

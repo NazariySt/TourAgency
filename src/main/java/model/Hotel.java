@@ -4,7 +4,9 @@ package model;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "hotels")
@@ -20,6 +22,7 @@ public class Hotel {
 
     @Column(name = "country")
     private String country;
+
 
     public Integer getId() {
         return id;

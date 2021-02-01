@@ -1,7 +1,7 @@
 package services;
 
 import model.Room;
-import model.RoomClass;
+import model.RoomType;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface RoomService {
 
     Room getRoomById(Integer roomId);
 
-    RoomClass getRoomClassById(Integer roomClassId);
+    RoomType getRoomClassById(Integer roomClassId);
 
 
 }

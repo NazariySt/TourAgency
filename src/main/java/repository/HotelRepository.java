@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface HotelRepo extends JpaRepository<Hotel , Integer> {
+public interface HotelRepository extends JpaRepository<Hotel , Integer> {
     @Override
     Optional<Hotel> findById(Integer integer);
 
     @Override
     List<Hotel> findAll();
+
 }

@@ -3,12 +3,11 @@ package repository;
 import model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+@Repository
+public interface RoomRepository extends JpaRepository<Room , Integer> {
 
-public interface RoomRepo extends JpaRepository<Room , Integer> {
-
-   // @Query("select h. from Hotel h where h.name=?1")
-   // List<Room> findRoomByHotel()
 
 }
