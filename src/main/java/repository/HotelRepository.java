@@ -15,4 +15,9 @@ public interface HotelRepository extends JpaRepository<Hotel , Integer> {
     @Override
     List<Hotel> findAll();
 
+    void addHotel(String hotelName, String hotelCountry);
+
+    Hotel findHotelById(Integer id);
+
+
 }
