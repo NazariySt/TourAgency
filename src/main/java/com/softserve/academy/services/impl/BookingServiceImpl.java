@@ -1,4 +1,4 @@
-package com.softserve.academy.impl;
+package com.softserve.academy.services.impl;
 
 import com.softserve.academy.model.Order;
 import com.softserve.academy.model.Room;
@@ -7,10 +7,14 @@ import com.softserve.academy.ourDAO.OrderDao;
 import com.softserve.academy.ourDAO.RoomDao;
 import com.softserve.academy.ourDAO.UserDao;
 import com.softserve.academy.services.BookService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+@Transactional
+@Service
 public class BookingServiceImpl implements BookService {
 
     private final OrderDao bookingDao;

@@ -8,9 +8,9 @@ public interface RoomService {
 
     List<Room> getRoomsForConcreteDatesByHotelID(Integer hotelId, String start, String end);
 
-    void save(Integer hotelId, Integer roomClassId);
+    void save(Room room, Integer hotelID);
 
-    void bookingRoom(Integer roomId, String bookingDate, String userName);
+    List<Room> findAvailableRooms(int hotelId, String startingDate, String endingDate);
 
     void delete(int id);
 
