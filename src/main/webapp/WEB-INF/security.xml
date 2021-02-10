@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+    <import resource="applicationContext.xml"/>
+
+    <security:http>
+        <security:form-login login-page="/loginprocessing"
+                             login-processing-url="/login"
+                             password-parameter="password"
+                             username-parameter="login"
+                             authentication-failure-url="/"
+                             authentication-success-forward-url="/"/>
+
+        <security:intercept-url pattern="/*" access="permitAll()"/>
+        <security:intercept-url pattern="/updateCountry/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/deleteCountry/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/createCountry" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/createRoom" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/deleteRoom/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/updateRoom/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/deleteHotel/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/createHotel" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/updateHotel/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/roomInfo/*" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/user" access="hasRole('ROLE_MANAGER')"/>
+        <security:intercept-url pattern="/profile" access="hasRole('ROLE_USER')"/>
+
+        <security:logout logout-url="/logout" logout-success-url="/"/>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="manager" password="{noop}manager" authorities="ROLE_MANAGER"/>
+            </security:user-service>
+        </security:authentication-provider>
+        <security:authentication-provider user-service-ref="userServiceImpl">
+            <security:password-encoder ref="encoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+</beans>

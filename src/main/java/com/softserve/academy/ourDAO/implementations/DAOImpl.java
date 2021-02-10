@@ -2,6 +2,7 @@ package com.softserve.academy.ourDAO.implementations;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.softserve.academy.ourDAO.AbstractDaoPattern;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Repository
 public class DAOImpl<Entity, Key extends Number> extends AbstractDaoPattern<Entity, Key> {
+
 
     private final SessionFactory sessionFactory;
 
