@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface RoomService {
 
-    List<Room> getRoomsForConcreteDatesByHotelID(Integer hotelId, String start, String end);
 
     void save(Room room, Integer hotelID);
 

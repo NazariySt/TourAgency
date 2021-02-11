@@ -7,20 +7,23 @@ import com.softserve.academy.ourDAO.OrderDao;
 import com.softserve.academy.ourDAO.RoomDao;
 import com.softserve.academy.ourDAO.UserDao;
 import com.softserve.academy.services.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@Transactional
+
 @Service
+@Transactional
 public class BookingServiceImpl implements BookService {
 
     private final OrderDao bookingDao;
     private final UserDao userDao;
     private final RoomDao roomDao;
 
+    @Autowired
     public BookingServiceImpl(OrderDao bookingDao, UserDao userDao, RoomDao roomDao) {
         this.bookingDao = bookingDao;
         this.userDao = userDao;

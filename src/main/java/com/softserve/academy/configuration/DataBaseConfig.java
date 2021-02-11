@@ -13,11 +13,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+
+//@PropertySource({"classpath:application.properties"})
+//@ComponentScan({"com.softserve.academy"})
 @Configuration
 @EnableTransactionManagement
-@PropertySource({"classpath:application.properties"})
-@ComponentScan({"com.softserve.academy"})
+@ImportResource({"classpath:hibernateConfig.xml"})
 public class DataBaseConfig {
+    /*
     private Environment env;
 
     @Autowired
@@ -73,4 +76,6 @@ public class DataBaseConfig {
         };
     }
 
+
+     */
 }

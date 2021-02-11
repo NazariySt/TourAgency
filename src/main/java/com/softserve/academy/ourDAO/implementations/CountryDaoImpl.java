@@ -6,7 +6,9 @@ import com.softserve.academy.ourDAO.CountryDao;
 import com.softserve.academy.ourDAO.OrderDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CountryDaoImpl extends DAOImpl<Country, Integer> implements CountryDao {
 
     @Autowired

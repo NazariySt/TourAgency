@@ -7,15 +7,21 @@ import com.softserve.academy.ourDAO.CountryDao;
 import com.softserve.academy.ourDAO.HotelDao;
 import com.softserve.academy.ourDAO.RoomDao;
 import com.softserve.academy.services.HotelService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class HotelServiceImpl implements HotelService {
 
     private final HotelDao hotelDao;
     private final RoomDao roomDao;
     private final CountryDao countryDao;
 
+    @Autowired
     public HotelServiceImpl(HotelDao hotelDao, RoomDao roomDao, CountryDao countryDao) {
         this.hotelDao = hotelDao;
         this.roomDao = roomDao;

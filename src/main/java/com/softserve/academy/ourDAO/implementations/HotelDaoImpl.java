@@ -4,9 +4,11 @@ import com.softserve.academy.model.Hotel;
 import com.softserve.academy.ourDAO.HotelDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class HotelDaoImpl extends DAOImpl<Hotel, Integer> implements HotelDao {
 
 
@@ -18,7 +20,7 @@ public class HotelDaoImpl extends DAOImpl<Hotel, Integer> implements HotelDao {
 
     @Override
     public List<Hotel> getAllCountryHotels(int id) {
-        return getCurrentSesion().createQuery("select hotel from Hotel hotel where hotel.country.id=:id")
+        return getCurrentSession().createQuery("select hotel from Hotel hotel where hotel.country.id=:id")
                 .setParameter("id", id)
                 .list();
     }

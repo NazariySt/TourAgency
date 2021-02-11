@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public class DAOImpl<Entity, Key extends Number> extends AbstractDaoPattern<Entity, Key> {
 
-
     private final SessionFactory sessionFactory;
 
     public DAOImpl(SessionFactory sessionFactory) {
@@ -42,7 +41,7 @@ public class DAOImpl<Entity, Key extends Number> extends AbstractDaoPattern<Enti
         return sessionFactory.getCurrentSession().createQuery("from " + ourClass.getName()).list();
     }
 
-    public Session getCurrentSesion() {
+    public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 }

@@ -7,6 +7,7 @@ import com.softserve.academy.ourDAO.HotelDao;
 import com.softserve.academy.ourDAO.OrderDao;
 import com.softserve.academy.ourDAO.RoomDao;
 import com.softserve.academy.services.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,15 +24,11 @@ public class RoomServiceImpl implements RoomService {
     private final HotelDao hotelDao;
     private final OrderDao bookingDao;
 
+    @Autowired
     public RoomServiceImpl(RoomDao roomDao, HotelDao hotelDao, OrderDao bookingDao) {
         this.roomDao = roomDao;
         this.hotelDao = hotelDao;
         this.bookingDao = bookingDao;
-    }
-
-    @Override
-    public List<Room> getRoomsForConcreteDatesByHotelID(Integer hotelId, String start, String end) {
-        return null;
     }
 
     @Override

@@ -24,21 +24,21 @@ public class BookingController {
 
     @GetMapping("/booking")
     public String booking(@RequestParam int hotelId,
-                          @RequestParam String dateFrom,
-                          @RequestParam String dateTo,
+                          @RequestParam String starterDate,
+                          @RequestParam String endDate,
                           Model model) {
-        model.addAttribute("dateFrom", dateFrom);
-        model.addAttribute("dateTo", dateTo);
-        model.addAttribute("rooms", roomService.findAvailableRooms(hotelId, dateFrom, dateTo));
+        model.addAttribute("dateFrom", starterDate);
+        model.addAttribute("dateTo", endDate);
+        model.addAttribute("rooms", roomService.findAvailableRooms(hotelId, starterDate, endDate));
         return "booking";
     }
 
-    @GetMapping("/bookRoom/{idRoom}/{dateFrom}/{dateTo}")
+    @GetMapping("/bookRoom/{idRoom}/{starterDate}/{endDate}")
     public String bookRoom(@PathVariable int idRoom,
-                           @PathVariable String dateFrom,
-                           @PathVariable String dateTo,
+                           @PathVariable String starterDate,
+                           @PathVariable String endDate,
                            Principal principal) {
-        bookingService.bookRoom(Integer.parseInt(principal.getName()), idRoom, dateFrom, dateTo);
+        bookingService.bookRoom(Integer.parseInt(principal.getName()), idRoom, starterDate, endDate);
         return "redirect:/profile";
     }
 }

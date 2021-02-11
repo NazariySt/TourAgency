@@ -4,17 +4,23 @@ import com.softserve.academy.model.Role;
 import com.softserve.academy.model.User;
 import com.softserve.academy.ourDAO.UserDao;
 import com.softserve.academy.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserDao userDao;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
     public UserServiceImpl(UserDao userDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDao = userDao;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
